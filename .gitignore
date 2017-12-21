@@ -1,0 +1,6 @@
+migrations/*
+*.db
+*.pyc
+env/*
+client_secret.json
+__pycache__/

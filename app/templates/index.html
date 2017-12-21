@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+	{% if current_user.is_active %}
+		<span style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+			<h2> You have successfully logged in {{current_user.first_name}} {{current_user.last_name}}. </h2>
+			<h3> Your current points from the google sheet, google image, name, and verification have all been stored </h3>
+			<hr>
+			<h2> Stored Database Stuff </h2>
+			<p> Image: <img src="{{current_user.google_image}}" class="img-rounded" alt="logo" width="50" height="50">  <br> Email: {{current_user.email}} <br> First Name: {{current_user.first_name}} <br> Last Name: {{current_user.last_name}} <br> Points: {{current_user.ev_points}}</p>
+			<hr>
+			<p> Future Options: 
+				<ul>
+					<li> Add sheet cell value of person to database. This will allow any changes on the site / sheet be easily synced and updated. </li>
+					<li> Add form on website to replace the google form. Admins can view submissions and approve them and points will be auto applied </li>
+					<li> literally anything else</li>
+				</ul>
+		</span>
+
+	{% else %}
+		<span style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+			<h2> You are not currently logged in.</h2> 
+			<h3>Do so by clicking at the top left and logging into a NCSU email account </h3>
+		</span>
+	{% endif %}
+
+{% endblock %}

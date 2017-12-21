@@ -1,0 +1,59 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Engineering Village</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='steam/js/bootstrap-notify.min.js')}}"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand" href="/">EngineeringVillage</a>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('index')}}">Home</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            {% if current_user.is_authenticated %}
+              {% if current_user.username %}
+                <li><a href="/profile">{{current_user.first_name}} {{current_user.last_name}} <span class="glyphicon glyphicon-user"></a></li>
+              {% endif %}
+              <li><a href="{{ url_for('logout') }}">Log Out <span class="glyphicon glyphicon-log-out"></span></a></li>
+            {% else %}
+              <li><a href="{{ url_for('login')}}">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+            {% endif %}
+          </ul>
+          
+      </div>
+      
+    </div>
+  </nav>
+
+  <div class="container" style="">
+    {% block body %} {% endblock %}
+  </div>
+
+  <script>
+
+  </script> 
+  
+</body>
+</html>
